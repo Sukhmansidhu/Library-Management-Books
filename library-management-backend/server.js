@@ -69,29 +69,24 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function(origin, callback) {
-    // allow requests with no origin like Postman
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // allow requests like Postman
     if (allowedOrigins.indexOf(origin) === -1) {
       return callback(new Error("CORS not allowed"), false);
     }
     return callback(null, true);
   },
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// Handle preflight requests for all routes
-app.options("*", cors());
-
-// Serve uploads folder
+// Serve uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 
-// Optional contact routes
 try {
   const contactRoutes = require("./routes/contactRoutes");
   app.use("/api/contact", contactRoutes);
@@ -103,9 +98,9 @@ try {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
-  // Express 5 compatible catch-all route
+  // Catch-all route for React
   app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
 }
 

@@ -47,7 +47,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { BookContext } from '../context/BookContext';
 import "../style/Navbar.css";
-import LibraryLogo from '../assets/Library.png'; // Import image directly
+
 
 const Navbar = () => {
   const { token, setToken, setUser } = useContext(BookContext);
@@ -70,7 +70,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="logo" >
-       <img src={LibraryLogo} alt="Library Logo" className="navbar-logo" />
+       <img src="/assets/Library.png" alt="Library Logo" className="navbar-logo" />
       </Link>
       <div className="nav-links">
         {!token && (

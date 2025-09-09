@@ -84,13 +84,14 @@ app.use(cors({
 // Handle preflight requests for all routes
 app.options("*", cors());
 
-// Serve uploads
+// Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 
+// Optional contact routes
 try {
   const contactRoutes = require("./routes/contactRoutes");
   app.use("/api/contact", contactRoutes);
@@ -102,9 +103,9 @@ try {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
-  // Catch-all route for React
-  app.get(/^\/.*/, (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  // Express 5 compatible catch-all route
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
   });
 }
 

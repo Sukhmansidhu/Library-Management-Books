@@ -1,0 +1,542 @@
+ /* body {
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4f46e5;
+    padding: 10px 20px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover,
+nav button:hover {
+    text-decoration: underline;
+}
+
+nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+ .login-form,
+.register-form {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.register-form {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.login-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotate(45deg);
+    animation: moveGradientLogin 6s linear infinite;
+    pointer-events: none;
+}
+
+.register-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotate(45deg);
+    animation: moveGradient 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes moveGradientLogin {
+    0% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(20px, 20px); }
+    100% { transform: rotate(45deg) translate(0, 0); }
+}
+
+@keyframes moveGradient {
+    0% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(20px, 20px); }
+    100% { transform: rotate(45deg) translate(0, 0); }
+}
+
+.login-form:hover,
+.register-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
+}
+
+.login-form h2,
+.register-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+.login-form input,
+.register-form input,
+.register-form select {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus,
+.register-form input:focus,
+.register-form select:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transform: scale(1.02);
+}
+
+.login-form button,
+.register-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-form button {
+    background: #10b981;
+}
+
+.login-form button:hover {
+    background: #059669;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.register-form button {
+    background: #10b981;
+}
+
+.register-form button:hover {
+    background: #059669;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.register-form select {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.register-form select,
+.register-form button {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto; 
+}
+
+
+.login-form input,
+.login-form button {
+    position: relative;
+    z-index: 1; 
+    pointer-events: auto; 
+}
+
+.login-form input::placeholder,
+.register-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+}
+
+
+.home-page {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.home-page h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4f46e5;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 20px;
+}
+
+.book-card {
+    background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+}
+
+.book-card h3 {
+    margin-bottom: 10px;
+    color: #1f2937;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.book-card p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #4b5563;
+}
+
+.book-card button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.book-card .borrow {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.book-card .borrow:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.book-card .return {
+    background-color: #147a58ff; 
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid #10b981;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.book-card .return:hover {
+    background-color: #10b981;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+
+.add-book-form {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.add-book-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+}
+
+.add-book-form h3 {
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.add-book-form input,
+.add-book-form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.add-book-form input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    transform: scale(1.02);
+}
+
+.add-book-form button {
+    background-color: #8b5cf6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-book-form button:hover {
+    background-color: #7c3aed;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+.hero {
+    background-color: #e0f2fe;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #4f46e5;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+.features {
+    background-color: #f0f9ff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background-color: #e0f2fe;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.about {
+    background-color: #f0f9ff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+.cta {
+    background-color: #dbeafe;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+
+.testimonials {
+    background-color: #f0f9ff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    background-color: #e0f2fe;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+    background-color: #f0f9ff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    margin-bottom: 20px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.contact button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background-color: #2563eb;
+}
+
+@media (min-width: 768px) {
+
+    .features .grid,
+    .testimonials .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+
+.search-container {
+    position: relative;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.search-bar:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.search-bar:focus+.search-icon {
+    color: #3b82f6;
+    transform: translateY(-50%) scale(1.1);
+}  */

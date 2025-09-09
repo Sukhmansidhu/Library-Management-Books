@@ -1,0 +1,117 @@
+:root {
+  --color-primary: #1e3a8a; 
+  --color-secondary: #6516b0; 
+  --color-accent: #f59e0b; 
+  --color-text-light: #e2e8f0; 
+  --color-white: #ffffff;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-full: 9999px;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-text-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-sans);
+  margin-bottom: var(--space-lg);
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.navbar .nav-links a,
+.navbar .nav-links span,
+.navbar .nav-links button {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: var(--font-size-base);
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links span:hover {
+  color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar .nav-links button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.navbar .nav-links button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.navbar-logo {
+  height: auto;
+  width: 6rem; 
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform var(--transition-medium), filter var(--transition-medium);
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px var(--color-accent));
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: var(--space-sm);
+  }
+  
+  .navbar-logo {
+    width: 5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .navbar .nav-links a,
+  .navbar .nav-links span,
+  .navbar .nav-links button {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-sm);
+  }
+}

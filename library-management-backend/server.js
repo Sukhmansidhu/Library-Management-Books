@@ -95,11 +95,12 @@ try {
 }
 
 // Serve React frontend in production
+// Serve React frontend in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
-  // Catch-all route for React
-  app.get("/*", (req, res) => {
+  // Correct catch-all route for React
+  app.get(/^\/.*$/, (req, res) => {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
 }

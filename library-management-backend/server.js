@@ -61,7 +61,7 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-
+// CORS setup
 const allowedOrigins = [
   "http://localhost:3000",
   "https://library-management-frontend1.netlify.app"
@@ -77,11 +77,11 @@ app.use(cors({
     return callback(null, true);
   },
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow these methods
-  allowedHeaders: ["Content-Type", "Authorization"], // allow these headers
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// Make sure Express handles OPTIONS requests
+// Handle preflight requests for all routes
 app.options("*", cors());
 
 // Serve uploads
@@ -98,6 +98,16 @@ try {
   console.warn("Contact routes not loaded:", error.message);
 }
 
-// Server start
+// Serve React frontend in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  // Catch-all route for React
+  app.get(/^\/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+}
+
+// Start server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

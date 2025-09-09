@@ -5,8 +5,8 @@ const bookSchema = new mongoose.Schema({
   author: { type: String, required: true },
   isbn: { type: String, required: true, unique: true },
   available: { type: Boolean, default: true },
-  borrowedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null }, // Tracks borrower
-  image: { type: String, default: null } // Store image filename
+  borrowedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null }, 
+  image: { type: String, default: null } 
 }, { timestamps: true });
 
 module.exports = mongoose.model("Book", bookSchema);

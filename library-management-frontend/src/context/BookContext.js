@@ -11,7 +11,6 @@ export const BookProvider = ({ children }) => {
   const [userLoading, setUserLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch books
   useEffect(() => {
     const fetchBooks = async () => {
       if (!token) return;
@@ -35,7 +34,6 @@ export const BookProvider = ({ children }) => {
     fetchBooks();
   }, [token]);
 
-  // Fetch current user
   useEffect(() => {
     const fetchUser = async () => {
       setUserLoading(true);

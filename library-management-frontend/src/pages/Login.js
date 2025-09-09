@@ -13,17 +13,17 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call backend login
+     
       const res = await axios.post("http://localhost:8080/api/auth/login", {
         username,
         password
       });
 
-      // Save token in localStorage
+     
       localStorage.setItem('token', res.data.token);
       setToken(res.data.token);
 
-      // ✅ Now backend sends full user object { id, username, role }
+     
       setUser(res.data.user);
 
       navigate('/');

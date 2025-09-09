@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-// Middleware: verify JWT token
+
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -12,14 +12,14 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // { id, role }
+    req.user = decoded; 
     next();
   } catch (error) {
     res.status(401).json({ message: "Invalid token" });
   }
 };
 
-// Middleware: restrict by role
+
 const requireRole = (role) => {
   return (req, res, next) => {
     if (req.user.role !== role) {

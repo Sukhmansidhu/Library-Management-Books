@@ -7,7 +7,7 @@ const User = require("../models/User");
 router.post("/register", (req, res) => register(req, res));
 router.post("/login", (req, res) => login(req, res));
 
-// /me endpoint
+
 router.get("/me", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

@@ -1,8 +1,8 @@
 :root{
   --card-bg: #fff8e6;
-  --accent: #3b82f6;       /* borrow */
-  --success: #147a58;      /* return */
-  --muted: #9ca3af;        /* disabled */
+  --accent: #3b82f6;       
+  --success: #147a58;      
+  --muted: #9ca3af;        
   --text: #0f172a;
   --subtext: #475569;
   --shadow: 0 10px 30px rgba(2,6,23,0.08);
@@ -11,18 +11,16 @@
   --glass: rgba(255,255,255,0.65);
 }
 
-/* Entry animation */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
 
-/* Card container */
+
 .book-card{
   background: linear-gradient(180deg, var(--card-bg), #fff);
   border-radius: var(--radius);
@@ -32,7 +30,7 @@
   flex-direction: column;
   gap: var(--gap);
   width: 100%;
-  max-width: 360px; /* keeps cards tidy in wide layouts */
+  max-width: 360px; 
   margin: 0 auto;
   transform-origin: center;
   will-change: transform, opacity;
@@ -42,13 +40,11 @@
   overflow: hidden;
 }
 
-/* Hover lift */
 .book-card:hover{
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 18px 40px rgba(2,6,23,0.12);
 }
 
-/* Image */
 .book-card img{
   width: 100%;
   height: 220px;
@@ -59,12 +55,10 @@
   box-shadow: inset 0 -6px 20px rgba(0,0,0,0.03);
 }
 
-/* Slight zoom on hover */
 .book-card:hover img{
   transform: scale(1.03);
 }
 
-/* Fallback image box */
 .book-card > div[style*="No Image Available"]{
   display: flex;
   align-items: center;
@@ -74,7 +68,6 @@
   border-radius: 10px;
 }
 
-/* Title & meta */
 .book-card h3{
   margin: 0;
   font-size: 1.15rem;
@@ -89,10 +82,8 @@
   font-size: 0.95rem;
 }
 
-/* Status line */
 .book-card p strong{ color: var(--text); font-weight: 600; }
 
-/* Borrowed-by line smaller */
 .book-card small,
 .book-card .borrowed-by{
   display: block;
@@ -102,7 +93,6 @@
   opacity: 0.95;
 }
 
-/* Actions row */
 .book-card .actions,
 .book-card > div[style*="display: flex"]{
   display: flex;
@@ -112,7 +102,6 @@
   margin-top: 8px;
 }
 
-/* Generic button base */
 .book-card .btn{
   padding: 8px 12px;
   border-radius: 10px;
@@ -129,7 +118,6 @@
   gap: 8px;
 }
 
-/* Borrow button */
 .book-card .btn-borrow{
   background: linear-gradient(180deg, var(--accent), #2563eb);
   color: #fff;
@@ -140,7 +128,6 @@
   box-shadow: 0 14px 30px rgba(37,99,235,0.18);
 }
 
-/* Return button */
 .book-card .btn-return{
   background: linear-gradient(180deg, #18936b, var(--success));
   color: #fff;
@@ -150,7 +137,6 @@
   box-shadow: 0 14px 30px rgba(20,122,88,0.18);
 }
 
-/* Disabled / not available */
 .book-card .btn-disabled,
 .book-card .btn[disabled]{
   background: linear-gradient(180deg, #cfd4d8, var(--muted));
@@ -160,11 +146,8 @@
   box-shadow: none;
 }
 
-/* Small icon style if you want to add icons in future */
 .book-card .btn svg{ width: 16px; height: 16px; opacity: 0.95; }
 
-/* Responsive adjustments */
-/* Smaller cards on very small screens */
 @media (max-width: 480px){
   .book-card{
     padding: 12px;
@@ -181,8 +164,6 @@
   .book-card .btn{ min-width: 78px; padding: 7px 10px; font-size: 0.9rem; border-radius: 9px; }
 }
 
-/* Grid container hint (if you wrap cards in a list) */
-/* Put this on the parent container that renders multiple cards */
 .book-grid{
   display: grid;
   gap: 16px;
@@ -190,18 +171,15 @@
   align-items: start;
 }
 
-/* For medium screens */
 @media (min-width: 768px){
   .book-grid{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 }
 
-/* Accessibility: focus states */
 .book-card .btn:focus{
   outline: 3px solid rgba(59,130,246,0.18);
   outline-offset: 2px;
 }
 
-/* Tiny flourish for status label */
 .book-card .status-pill{
   display: inline-block;
   padding: 4px 8px;

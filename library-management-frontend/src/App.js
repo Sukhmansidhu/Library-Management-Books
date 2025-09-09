@@ -3,14 +3,14 @@ import { BookProvider } from './context/BookContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Navbar from './components/Navbar';   // ✅ add this
+import Navbar from './components/Navbar';   
 import NotFound from './pages/NotFound';
 
 function App() {
   return (
     <BookProvider>
       <Router>
-        <Navbar />   {/* ✅ shows at the top */}
+        <Navbar />   
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

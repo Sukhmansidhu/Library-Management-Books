@@ -7,7 +7,7 @@ import "../style/Register.css";
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('member'); // default role
+  const [role, setRole] = useState('member'); 
   const navigate = useNavigate();
   const { setToken, setUser } = useContext(BookContext);
 

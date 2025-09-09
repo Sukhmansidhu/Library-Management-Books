@@ -2,22 +2,18 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Register
 exports.register = async (req, res) => {
   try {
     const { username, password, role } = req.body;
 
-    // check duplicate
     const existingUser = await User.findOne({ username });
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
-    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({ username, password: hashedPassword, role });
     await user.save();
 
-    // generate JWT token
     const token = jwt.sign(
       { id: user._id, role: user.role, username: user.username },
       process.env.JWT_SECRET,
@@ -38,7 +34,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
